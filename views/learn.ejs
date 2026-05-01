@@ -126,7 +126,103 @@
     <!-- ── Section 4 ─────────────────────────────────────────────────── -->
     <section class="mb-5">
       <h2 class="h4 fw-semibold mb-3">
-        <span class="section-icon bg-danger text-white">4</span>
+        <span class="section-icon bg-primary text-white">4</span>
+        Why Vocabularies Differ Between Models
+      </h2>
+      <p>
+        Every model trains its own vocabulary from scratch by running BPE on its specific training corpus until it
+        hits a target size. Nothing is hand-designed — the vocabulary is a ranked list of the most statistically
+        useful text chunks <em>for that dataset</em>. That's why two models with the same algorithm can tokenize the
+        same word completely differently.
+      </p>
+
+      <div class="table-responsive mb-4">
+        <table class="table table-bordered table-sm align-middle">
+          <thead class="table-dark">
+            <tr>
+              <th>Model family</th>
+              <th>Vocab size</th>
+              <th>Why that size?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>GPT-3.5 Turbo</td>
+              <td class="text-nowrap">100,277 <span class="badge bg-secondary ms-1">cl100k_base</span></td>
+              <td>OpenAI's 2023 general-purpose vocabulary, trained on a wide multilingual corpus.</td>
+            </tr>
+            <tr>
+              <td>GPT-4o, o1, o3</td>
+              <td class="text-nowrap">200,019 <span class="badge bg-secondary ms-1">o200k_base</span></td>
+              <td>OpenAI doubled the vocabulary to reduce token counts — especially for code and non-Latin scripts.</td>
+            </tr>
+            <tr>
+              <td>Claude 3.x</td>
+              <td>100,256</td>
+              <td>Anthropic's own BPE vocabulary trained on their corpus. Similar size to cl100k but different merges, so word boundaries don't always align with OpenAI's.</td>
+            </tr>
+            <tr>
+              <td>Llama 2 &amp; Mistral</td>
+              <td>32,000</td>
+              <td>SentencePiece BPE trained mostly on English. Smaller vocab = lighter model, but rarer words and code identifiers get split into many more pieces.</td>
+            </tr>
+            <tr>
+              <td>Llama 3</td>
+              <td>128,256</td>
+              <td>Meta tripled the vocabulary to dramatically improve multilingual and code coverage.</td>
+            </tr>
+            <tr>
+              <td>Gemini</td>
+              <td>~256,000</td>
+              <td>Google's SentencePiece vocabulary built from a heavily multilingual corpus. Larger vocab means fewer tokens per sentence across many languages.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h6 class="fw-semibold mb-2">The core tradeoff</h6>
+      <div class="row g-3 mb-3">
+        <div class="col-md-6">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+              <h6 class="text-success"><i class="bi bi-arrow-up-circle me-1"></i>Larger vocabulary</h6>
+              <ul class="small text-muted mb-0">
+                <li>Fewer tokens per sentence &rarr; cheaper API calls, more text fits in context</li>
+                <li>Better handling of code identifiers, URLs, and rare words</li>
+                <li>Larger embedding table uses more memory at inference</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+              <h6 class="text-danger"><i class="bi bi-arrow-down-circle me-1"></i>Smaller vocabulary</h6>
+              <ul class="small text-muted mb-0">
+                <li>More tokens per sentence &rarr; higher cost, shorter effective context</li>
+                <li>Rare words split into many pieces (e.g. <code>"Tokenization"</code> &rarr; <code>["Token", "ization"]</code>)</li>
+                <li>Lighter model, faster token lookup</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert alert-info d-flex gap-2 align-items-start">
+        <i class="bi bi-lightbulb-fill fs-5 flex-shrink-0 mt-1"></i>
+        <div>
+          <strong>Try it yourself.</strong> Paste the same Python snippet or Japanese text and compare
+          <strong>Llama 2</strong> (32k vocab) against <strong>GPT-4o</strong> (200k vocab) using the
+          <a href="/" class="alert-link">Compare All Models</a> button. Llama 2 will produce significantly more
+          tokens for the same text — directly increasing cost and eroding context window capacity.
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Section 5 ─────────────────────────────────────────────────── -->
+    <section class="mb-5">
+      <h2 class="h4 fw-semibold mb-3">
+        <span class="section-icon bg-danger text-white">5</span>
         Tokens and the Context Window
       </h2>
       <p>
@@ -154,10 +250,10 @@
       </div>
     </section>
 
-    <!-- ── Section 5 ─────────────────────────────────────────────────── -->
+    <!-- ── Section 6 ─────────────────────────────────────────────────── -->
     <section class="mb-5">
       <h2 class="h4 fw-semibold mb-3">
-        <span class="section-icon bg-secondary text-white">5</span>
+        <span class="section-icon bg-secondary text-white">6</span>
         Why Token Count Affects Cost
       </h2>
       <p>
@@ -181,10 +277,10 @@
       </div>
     </section>
 
-    <!-- ── Section 6 ─────────────────────────────────────────────────── -->
+    <!-- ── Section 7 ─────────────────────────────────────────────────── -->
     <section class="mb-5">
       <h2 class="h4 fw-semibold mb-3">
-        <span class="section-icon bg-info text-dark">6</span>
+        <span class="section-icon bg-info text-dark">7</span>
         Different Models, Different Tokenizers
       </h2>
       <p>
@@ -206,10 +302,10 @@
       </p>
     </section>
 
-    <!-- ── Section 7 ─────────────────────────────────────────────────── -->
+    <!-- ── Section 8 ─────────────────────────────────────────────────── -->
     <section class="mb-5">
       <h2 class="h4 fw-semibold mb-3">
-        <span class="section-icon bg-dark text-white">7</span>
+        <span class="section-icon bg-dark text-white">8</span>
         Practical Tips
       </h2>
       <div class="row g-3">
@@ -254,7 +350,7 @@
 
     <section class="mb-5">
       <h2 class="d-flex align-items-center gap-3 mb-4">
-        <span class="section-icon bg-primary text-white">8</span>
+        <span class="section-icon bg-primary text-white">9</span>
         Understanding the Statistics Dashboard
       </h2>
       <p>After tokenizing any text, a <strong>Detailed Statistics</strong> panel appears below the summary cards. Each tile explains a different aspect of how your text maps to tokens.</p>
