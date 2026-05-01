@@ -1,0 +1,87 @@
+/* ── Token colour palette (6 cycling pastel colours) ──────────────────────── */
+.token-span {
+  display: inline;
+  border-radius: 3px;
+  padding: 0 1px;
+  cursor: default;
+  transition: filter 0.15s;
+}
+.token-span:hover {
+  filter: brightness(0.88);
+  outline: 1px solid rgba(0,0,0,0.25);
+}
+.token-span.color-0 { background-color: #b5d5fb; }
+.token-span.color-1 { background-color: #fbd5a5; }
+.token-span.color-2 { background-color: #b5fbcb; }
+.token-span.color-3 { background-color: #fbb5d5; }
+.token-span.color-4 { background-color: #e0b5fb; }
+.token-span.color-5 { background-color: #fbf5a5; }
+
+/* Token display area */
+.token-display {
+  line-height: 2;
+  font-size: 0.9rem;
+  word-break: break-word;
+}
+
+/* Learn page: demo chips */
+.token-chip {
+  display: inline-block;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-family: monospace;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.token-chip.color-0 { background-color: #b5d5fb; }
+.token-chip.color-1 { background-color: #fbd5a5; }
+.token-chip.color-2 { background-color: #b5fbcb; }
+.token-chip.color-3 { background-color: #fbb5d5; }
+.token-chip.color-4 { background-color: #e0b5fb; }
+.token-chip.color-5 { background-color: #fbf5a5; }
+
+/* Learn page: numbered section icons */
+.section-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+/* Compare grid cards */
+.compare-card .token-mini {
+  line-height: 1.8;
+  font-size: 0.78rem;
+  word-break: break-word;
+}
+
+/* Sticky table header fix */
+.sticky-top th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #f8f9fa;
+}
+
+/* Deep stats tiles */
+.stat-tile {
+  background: #f8f9fa;
+  transition: box-shadow 0.15s, transform 0.15s;
+  cursor: help;
+}
+.stat-tile:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,.12);
+  transform: translateY(-1px);
+}
+
+/* Wider tooltip for stat tiles */
+.stat-tooltip .tooltip-inner {
+  max-width: 320px;
+  text-align: left;
+}
