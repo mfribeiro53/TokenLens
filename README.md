@@ -1,8 +1,23 @@
 # TokenLens
 
+**TokenLens is a free, offline educational tool for anyone who wants to understand how large language models (LLMs) actually read text.**
+
+LLMs don't process words — they process *tokens*. A token is a small chunk of text (a word, part of a word, a punctuation mark, or even a single character) that the model has learned to recognise as a unit. TokenLens lets you paste any text, see exactly how it breaks into tokens for each major model, and explore what that means for context limits, cost, and model behaviour — all without an account or API key.
+
 > Interactive tokenizer for GPT, Claude, Llama, Gemini & Mistral. Visualise token boundaries, compare models side-by-side, and analyse context window usage, cost, and compression stats. Runs entirely offline — no API keys required.
 
 ![Node.js](https://img.shields.io/badge/Node.js-22%2B-brightgreen) ![Express](https://img.shields.io/badge/Express-5.x-blue) ![License](https://img.shields.io/badge/license-MIT-lightgrey)
+
+---
+
+## Who is this for?
+
+- **Developers** building with LLM APIs who want to understand prompt token budgets and cost
+- **Students & researchers** learning how transformer models process language
+- **Writers & content creators** curious why some words cost more tokens than others
+- **Anyone** who has heard the word "token" and wants to see it in action
+
+No sign-up. No API key. No data leaves your machine. Just clone, `npm install`, and open your browser.
 
 ---
 
